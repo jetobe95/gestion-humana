@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <title>Emergencias</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -18,14 +19,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-  <span class="w3-bar-item w3-right">Logo</span>
+  <span class="w3-bar-item w3-right">Sistema de Emergencias</span>
 </div>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="imagenes/emergencia.jpg" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong>Mike</strong></span><br>
@@ -36,7 +37,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <hr>
   <div class="w3-container">
-    <h5>Dashboard</h5>
+    <h5>Centro de Mando</h5>
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
@@ -61,7 +62,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Centro de Mando</b></h5>
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
@@ -109,8 +110,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-third">
-        <h5>Regions</h5>
+      <div>
+        <h5>Mapa</h5>
         <!-- <img src="/w3images/region.jpg" style="width:100%" alt="Google Regional Map"> -->
         <div id="map"></div>
       </div>
@@ -119,7 +120,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <hr>
   <div class="w3-container">
-    <h5>General Stats</h5>
+    <h5>Estadisticas Generales </h5>
     <p>New Visitors</p>
     <div class="w3-grey">
       <div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
@@ -271,8 +272,8 @@ function w3_close() {
     var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
+        center: {lat: 11.0024123,lng:-74.8244025},
+        zoom: 12
       });
     }
   </script>
