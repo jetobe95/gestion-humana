@@ -34,8 +34,13 @@ function arrayObjectIndexOf(myArray, searchTerm, property) {
             Cedula:this.Cedula,
             icon:"imagenes/policeman-standing-up.png"
           });
+          var contentString="Nombre "+this.Nombre +"Cedula"+this.Cedula;
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
           marker.addListener('click', function() {
            console.log("Marcador llamado "+this.Nombre);
+           infowindow.open(map, marker);
           });
           return marker; 
 
