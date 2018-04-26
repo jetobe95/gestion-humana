@@ -58,8 +58,7 @@ return  this.Marker=new google.maps.Marker({
   referenciajeffrey.once('value', function( data) {
 
     data.forEach(element => {
-        //console.log(element.val());
-        //Brigadistap=data;
+      
         Markers.push(new Brigadista(element).putMarker());
     });
 
