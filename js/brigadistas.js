@@ -13,25 +13,27 @@
       this.Cedula=Data.Cedula;
       this.Celular=Data.Celular;
       this.Img_Perfil=Data.Img_Perfil;
-    //this.GenerateMarker();
+      this.GenerateMarker();
      
     }
 
      GenerateMarker() {
-        
-       
-
-
-
-
-
+         return new google.maps.Marker({
+            position: {lat:this.Lat,lng:this.Long},
+            map: map,
+            Nombre:this.Nombre,
+            Estado:this.Estado,
+            Cedula:this.Cedula,
+            icon:"imagenes/policeman-standing-up.png"
+          })
         
     }
   }
   referenciajeffrey.once('value', function(data) {
 
     data.forEach(element => {
-       
+        //console.log(element.val());
+        //Brigadistap=data;
         Brigadistap=new Brigadista(element);
     });
 
