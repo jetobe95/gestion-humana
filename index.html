@@ -279,6 +279,19 @@ function w3_close() {
   </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FOEsjQwbAbbHqdVYWKNvzcsPw4Eooyo&callback=initMap"
 async defer></script>
+<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBzoRn4giHTWJ9ChRBNA5rP56ERjPhzjLE",
+    authDomain: "gestion-humana.firebaseapp.com",
+    databaseURL: "https://gestion-humana.firebaseio.com",
+    projectId: "gestion-humana",
+    storageBucket: "gestion-humana.appspot.com",
+    messagingSenderId: "779624072038"
+  };
+  firebase.initializeApp(config);
+</script>
 
 </body>
 </html>
