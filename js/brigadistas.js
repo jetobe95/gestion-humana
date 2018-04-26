@@ -1,3 +1,5 @@
+
+
 function arrayObjectIndexOf(myArray, searchTerm, property) {
   for(var i = 0, len = myArray.length; i < len; i++) {
       if (myArray[i][property] === searchTerm) return i;
@@ -20,45 +22,31 @@ function arrayObjectIndexOf(myArray, searchTerm, property) {
       this.Cedula=Data.Cedula;
       this.Celular=Data.Celular;
       this.Img_Perfil=Data.Img_Perfil;
-      //this.GenerateMarker();
-      // this.Marker=new google.maps.Marker({
-      //   position: {lat:this.Lat,lng:this.Long},
-      //   map: map,
-      //   Nombre:this.Nombre,
-      //   Estado:this.Estado,
-      //   Cedula:this.Cedula,
-      //   icon:"imagenes/policeman-standing-up.png"
-      // });
      
     }
     putMarker(){
-return  this.Marker=new google.maps.Marker({
-  position: {lat:this.Lat,lng:this.Long},
-  map: map,
-  Nombre:this.Nombre,
-  Estado:this.Estado,
-  Cedula:this.Cedula,
-  icon:"imagenes/policeman-standing-up.png"
-});
+      
+         var marker=  this.Marker=new google.maps.Marker({
+            position: {lat:this.Lat,lng:this.Long},
+            map: map,
+            Nombre:this.Nombre,
+            Estado:this.Estado,
+            Cedula:this.Cedula,
+            icon:"imagenes/policeman-standing-up.png"
+          });
+          marker.addListener('click', function() {
+           console.log("Marcador llamado "+this.Nombre);
+          });
+          return marker; 
 
     }
 
-    //  GenerateMarker() {
-    //      return new google.maps.Marker({
-    //         position: {lat:this.Lat,lng:this.Long},
-    //         map: map,
-    //         Nombre:this.Nombre,
-    //         Estado:this.Estado,
-    //         Cedula:this.Cedula,
-    //         icon:"imagenes/policeman-standing-up.png"
-    //       })
-        
-    // }
-  }
+    }
+
+  
   referenciajeffrey.once('value', function( data) {
 
     data.forEach(element => {
-      
         Markers.push(new Brigadista(element).putMarker());
     });
 
@@ -67,17 +55,12 @@ return  this.Marker=new google.maps.Marker({
 
   starCountRef.on("child_changed",function(res){
 
-
-    var Cambio=new Brigadista(res);
-    var index=arrayObjectIndexOf(Markers,Cambio.Cedula,"Cedula");
-   console.log(index);
-  //  console.log(Cambio);
-   Markers[index].setPosition({lat:Cambio.Lat,lng:Cambio.Long})
-   //Markers=[...Markers] 
-
-
-
-
+        var Cambio=new Brigadista(res);
+        var index=arrayObjectIndexOf(Markers,Cambio.Cedula,"Cedula");
+        console.log(index);
+      //Cambia La posición del marcador que cambio
+        Markers[index].setPosition({lat:Cambio.Lat,lng:Cambio.Long})
+   
   });
 
 
