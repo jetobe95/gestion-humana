@@ -1,5 +1,7 @@
 var CasosRef = firebase.database().ref('Casos');
-var casosAbierto=0,casoCerrados=0,TodosLoscasos=[],InfoCaso;
+var casosAbierto=0,casoCerrados=0,TodosLoscasos=[],InfoCaso,HtmlCasosAbierto,HtmlCasosCerrados;
+HtmlCasosAbierto=document.getElementById('CasosAbiertos');
+HtmlCasosCerrados=document.getElementById('CasosCerrados');
 /**
  * Obejeto del tipo caso
  */
@@ -35,6 +37,8 @@ CasosRef.once('value', function (data) {
      
     });
     console.log(TodosLoscasos);
+    HtmlCasosAbierto.textContent=casosAbierto;
+    HtmlCasosCerrados.textContent=casoCerrados;
   
   
   });
