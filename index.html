@@ -42,7 +42,7 @@
 
 <script src="js/AngularFire.js"></script>
 
-<script src="js/brigadistas.js"></script>
+
 
 
 <meta charset="UTF-8">
@@ -81,7 +81,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <hr>
   <div class="w3-container">
-      <input type="text" ng-model="data.text"/>
+      
     
     <h5>Centro de Mando  </h5>
     
@@ -89,7 +89,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Casos</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
@@ -147,7 +147,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>50</h3>
+          <h3>51</h3>
         </div>
         <div class="w3-clear"></div>
         <h4>Brigadistas activos</h4>
@@ -321,12 +321,13 @@ function w3_close() {
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 11.019263,lng:-74.8495906},
-        zoom: 17.6,
+        zoom: 17,
        
       });
     }
     
   </script>
+  <script src="js/brigadistas.js"></script>
   <script src="js/Casos.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FOEsjQwbAbbHqdVYWKNvzcsPw4Eooyo&callback=initMap"
 async defer></script>

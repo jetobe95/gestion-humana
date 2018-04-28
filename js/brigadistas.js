@@ -44,13 +44,13 @@ class Brigadista {
       Nombre: this.Nombre,
       Estado: this.Estado,
       Cedula: this.Cedula,
-      icon: "imagenes/policeman-standing-up.png"
+      icon: this.Estado=="Disponible"? "imagenes/policeman-standing-up.png":"iconos/brigadista activo/64/empleados.png"
     });
 
     var tabla =' <link rel="stylesheet" href="css/styles.css">'+ '<table class="tg">' +
-      ' <tr><th class="tg-ikm8" rowspan="4">Fotooooo</th> <th class="tg-cobo">Nombre</th><th class="tg-6nqv">name</th>' +
-      '</tr> <tr><td class="tg-i3y8">Estado</td><td class="tg-6nqv">estado</td>' +
-      '</tr><tr><td class="tg-i3y8">Turno</td><td class="tg-6nqv">tunooo</td></tr><tr>' +
+      ' <tr><th class="tg-ikm8" rowspan="4">Fotooooo</th> <th class="tg-cobo">Nombre</th><th class="tg-6nqv">'+this.Nombre+'</th>' +
+      '</tr> <tr><td class="tg-i3y8">Estado </td><td class="tg-6nqv">'+this.Estado+'</td>' +
+      '</tr><tr><td class="tg-i3y8">Turno</td><td class="tg-6nqv">'+this.Cedula+'</td></tr><tr>' +
       '<td class="tg-i3y8">fecha</td>' +
       ' <td class="tg-6nqv">hoy</td>' +
       ' </tr>' +
