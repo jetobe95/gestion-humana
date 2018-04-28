@@ -36,7 +36,7 @@ CasosRef.once('value', function (data) {
              }
      
     });
-    console.log(TodosLoscasos);
+    
     HtmlCasosAbierto.textContent=casosAbierto;
     HtmlCasosCerrados.textContent=casoCerrados;
   
