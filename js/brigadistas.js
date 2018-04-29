@@ -111,4 +111,4 @@ starCountRef.on("child_changed", function (res) {
 
 
 
-var storage = firebase.storage().ref("/Images/1065.jpg");
+var storage = firebase.storage().ref("/Images/bombero (1).png");
