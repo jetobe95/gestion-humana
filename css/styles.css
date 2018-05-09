@@ -1,5 +1,32 @@
 #map {
     height: 400px;
     width: 100%;
+     
    }
-   
+
+   .gm-style img {
+    max-width : 90px;
+   }
+           
+    
+
+   .tg  {border-collapse:collapse;border-spacing:0;border-color:#999;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}
+   .tg .tg-cobo{background-color:#9698ed;color:#000000;border-color:inherit;vertical-align:top}
+   .tg .tg-ikm8{font-weight:bold;font-style:italic;font-size:18px;font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif !important;;background-color:#ffffff;color:#000000;border-color:#000000;text-align:center;vertical-align:top}
+   .tg .tg-6nqv{background-color:#ffffff;color:#000000;border-color:inherit;vertical-align:top}
+   .tg .tg-i3y8{background-color:#9698ed;border-color:inherit;vertical-align:top}
+   .tg .tg-w0e8{border-color:#f7fdfa;vertical-align:top}
+
+   /* html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Raleway", sans-serif
+  } */
+
+ 

@@ -1,0 +1,53 @@
+
+
+
+
+
+
+.form-register{
+width:98%;
+max-width:500px;
+margin:auto;
+background:white;
+border-radius:7px;
+}
+
+.form-titulo{
+background:deepskyblue;
+color:#fff;
+padding:20px;
+text-align:center;
+font-size:30px;
+font-weight:100;
+border-top-left-radius:7px;
+border-top-right-radius:7px;
+border-bottom:5px solid crimson;
+}
+.contenedor-inputs{
+padding:10px 30px;
+display:flex;
+flex-wrap:wrap;
+justify-content:space-between;
+}
+input{
+margin-bottom:15px;
+padding:15px;
+
+border-radius:3px;
+border: 1px solid darkgray;
+}
+
+.btn-enviar{
+background: crimson;
+padding:10px  30px ; 
+margin: auto;
+color:#fff;
+cursor:pointer;
+}
+.btn-enviar:active{
+transform: scale(1.05);
+}
+
+
+
+
