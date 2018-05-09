@@ -16,7 +16,7 @@ function check(event){
 	firebase.auth().signInWithEmailAndPassword(userc, passw)
 	.then(function(){
 		alert("Bienvenido");
-		window.location.href="index.html";
+		window.location.href="main.html";
 	})
 
 	.catch(function(error) {

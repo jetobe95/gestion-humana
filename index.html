@@ -1,398 +1,55 @@
 <!DOCTYPE html>
-<html ng-app="sampleApp">
-<title>Emergencias</title>
-<link rel="apple-touch-icon" sizes="57x57" href="FavIcon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="FavIcon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="FavIcon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="FavIcon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="FavIcon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="FavIcon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="FavIcon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="FavIcon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="FavIcon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="FavIcon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="FavIcon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="FavIcon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="FavIcon/favicon-16x16.png">
-<link rel="manifest" href="FavIcon/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="FavIcon/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" href="bootstrap/bootstrap.css">
-<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-<script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-  crossorigin="anonymous"></script>
-<!-- AngularJS-->
-<script src=" https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js ">
-</script>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Sign in </title>
+	
+	 <!-- boostrap import -->
 
-<!--Firebase-->
-<script src=" https://www.gstatic.com/firebasejs/3.6.6/firebase.js ">
-</script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
-<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
-
-<!--AngularFire-->
-<script src=" https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js ">
-</script>
-
-<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-storage.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-<script src="js/AngularFire.js"></script>
-<link rel="stylesheet" href='css/styles.css'>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+	<!-- añadiendo firebase  -->
+	<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyBzoRn4giHTWJ9ChRBNA5rP56ERjPhzjLE",
+	    authDomain: "gestion-humana.firebaseapp.com",
+	    databaseURL: "https://gestion-humana.firebaseio.com",
+	    projectId: "gestion-humana",
+	    storageBucket: "gestion-humana.appspot.com",
+	    messagingSenderId: "779624072038"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+	<script src="js/checkAccess.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<form id="form-sign">
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input id="email" type="text" class="form-control" name="email" value="">
+					</div>
+					<div class="form-group">
+						<label for="password">Contraseña</label>
+						<input id="password" type="password" class="form-control" name="password" value="">
+					</div>
+					<input type="submit" name="" value="signIn">
 
-
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<body ng-controller="SampleCtrl" class="w3-light-grey" >
-
-  <!-- Top container -->
-  <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();">
-      <i class="fa fa-bars"></i>  Menu</button>
-    <span class="w3-bar-item w3-right">Sistema de Emergencias</span>
-  </div>
-
-  <!-- Sidebar/menu -->
-  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
-    <br>
-    <div class="w3-container w3-row">
-      <div class="w3-col s4">
-        <img src="imagenes/emergencia.jpg" class="w3-circle w3-margin-right" style="width:46px">
-      </div>
-      <div class="w3-col s8 w3-bar">
-        <span>Welcome,
-          <strong>Mike</strong>
-        </span>
-        <br>
-        <a href="#" class="w3-bar-item w3-button">
-          <i class="fa fa-envelope"></i>
-        </a>
-        <a href="#" class="w3-bar-item w3-button">
-          <i class="fa fa-user"></i>
-        </a>
-        <a href="#" class="w3-bar-item w3-button">
-          <i class="fa fa-cog"></i>
-        </a>
-      </div>
-    </div>
-    <hr>
-    <div class="w3-container">
-
-
-      <h5>Centro de Mando </h5>
-
-    </div>
-    <div class="w3-bar-block">
-      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu">
-        <i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding w3-blue">
-        <i class="fa fa-users fa-fw"></i>  Overview</a>
-      <a href="#casos" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-eye fa-fw"></i>  Casos</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding" data-toggle="modal" data-target="#exampleModal">
-        <i class="fa fa-users fa-fw"></i> Registrar brigadista</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-diamond fa-fw"></i>  Orders</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-bell fa-fw"></i>  News</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-bank fa-fw"></i>  General</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-history fa-fw"></i>  History</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-cog fa-fw"></i>  Settings</a>
-      <br>
-      <br>
-    </div>
-  </nav>
-
-
-  <!-- Overlay effect when opening sidebar on small screens -->
-  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"
-    id="ModalSign"></div>
-
-  <!-- !PAGE CONTENT! -->
-  <div class="w3-main" style="margin-left:300px;margin-top:43px;">
-
-    <!-- Header -->
-    <header class="w3-container" style="padding-top:22px">
-      <h5>
-        <b>
-          <i class="fa fa-dashboard"></i> Centro de Mando</b>
-      </h5>
-    </header>
-
-    <div class="w3-row-padding w3-margin-bottom">
-      <div class="w3-quarter">
-        <div class="w3-container w3-red w3-padding-16 HoverDiv" onclick="console.log('jolaaa')">
-          <div class="w3-left">
-            <img src="iconos/VIEW ICONO/64/visibilidad.png" alt="">
-          </div>
-          <div class="w3-right">
-            <h3 id="CasosAbiertos"></h3>
-          </div>
-          <div class="w3-clear"></div>
-          <h4>Casos Abiertos</h4>
-        </div>
-      </div>
-      <div class="w3-quarter">
-        <div class="w3-container w3-blue w3-padding-16">
-          <div class="w3-left">
-            <img src="iconos/caso cerrado icono pagina 2/64/cerrar.png" alt="">
-          </div>
-          <div class="w3-right">
-            <h3 id="CasosCerrados"></h3>
-          </div>
-          <div class="w3-clear"></div>
-          <h4>Casos Cerrados</h4>
-        </div>
-      </div>
-      <div class="w3-quarter">
-        <div class="w3-container w3-teal w3-padding-16">
-          <div class="w3-left">
-            <i class="fa fa-share-alt w3-xxxlarge"></i>
-          </div>
-          <div class="w3-right">
-            <h3>50</h3>
-          </div>
-          <div class="w3-clear"></div>
-          <h4>Shares</h4>
-        </div>
-      </div>
-      <div class="w3-quarter">
-        <div class="w3-container w3-orange w3-text-white w3-padding-16">
-          <div class="w3-left">
-            <img src="iconos/lista de brigadistas 2 dasboard/64/empleados (4).png" alt="">
-          </div>
-          <div class="w3-right">
-            <h3 id="BrigadistasActivos"></h3>
-          </div>
-          <div class="w3-clear"></div>
-          <h4>Brigadistas activos</h4>
-        </div>
-      </div>
-    </div>
-
-    <div class="w3-panel">
-      <div class="w3-row-padding" style="margin:0 -16px">
-        <div>
-          <h5>Mapa</h5>
-          <!-- <img src="/w3images/region.jpg" style="width:100%" alt="Google Regional Map"> -->
-          <div id="map"></div>
-        </div>
-
-      </div>
-    </div>
-    <hr>
-
-    <div class="container" id="casos">
-      <h2 style="text-align: center">Casos Abiertos</h2>
-      <div class="container">
-        <table id="table" class="table table-hover table-striped table-dark ">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">Caso </th>
-              <th scope="col">Fecha inicio</th>
-              <th scope="col">Encargado</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Ubicación</th>
-            </tr>
-          </thead>
-          <tbody class="thead-light">
-
-
-
-          </tbody>
-        </table>
-      </div>
-
-
-
-
-    </div>
-    <hr>
-
-    <div class="w3-container">
-      <h5>Countries</h5>
-      <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-        <tr>
-          <td>United States</td>
-          <td>65%</td>
-        </tr>
-        <tr>
-          <td>UK</td>
-          <td>15.7%</td>
-        </tr>
-        <tr>
-          <td>Russia</td>
-          <td>5.6%</td>
-        </tr>
-        <tr>
-          <td>Spain</td>
-          <td>2.1%</td>
-        </tr>
-        <tr>
-          <td>India</td>
-          <td>1.9%</td>
-        </tr>
-        <tr>
-          <td>France</td>
-          <td>1.5%</td>
-        </tr>
-      </table>
-      <br>
-      <button class="w3-button w3-dark-grey">More Countries
-        <i class="fa fa-arrow-right"></i>
-      </button>
-    </div>
-    <hr>
-    <div class="w3-container">
-      <h5>Recent Users</h5>
-      <ul class="w3-ul w3-card-4 w3-white">
-        <li class="w3-padding-16">
-          <!-- <img src="/w3images/avatar2.png" class="w3-left w3-circle w3-margin-right" style="width:35px"> -->
-          <span class="w3-xlarge">Mike</span>
-          <br>
-        </li>
-        <li class="w3-padding-16">
-          <!-- <img src="/w3images/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:35px"> -->
-          <span class="w3-xlarge">Jill</span>
-          <br>
-        </li>
-        <li class="w3-padding-16">
-          <!-- <img src="/w3images/avatar6.png" class="w3-left w3-circle w3-margin-right" style="width:35px"> -->
-          <span class="w3-xlarge">Jane</span>
-          <br>
-        </li>
-      </ul>
-    </div>
-    <hr>
-
-    <div class="w3-container">
-      <h5>Recent Comments</h5>
-      <div class="w3-row">
-        <div class="w3-col m2 text-center">
-          <!-- <img class="w3-circle" src="/w3images/avatar3.png" style="width:96px;height:96px"> -->
-        </div>
-        <div class="w3-col m10 w3-container">
-          <h4>John
-            <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span>
-          </h4>
-          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-        </div>
-      </div>
-
-      <div class="w3-row">
-        <div class="w3-col m2 text-center">
-          <!-- <img class="w3-circle" src="/w3images/avatar1.png" style="width:96px;height:96px"> -->
-        </div>
-        <div class="w3-col m10 w3-container">
-          <h4>Bo
-            <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15 PM</span>
-          </h4>
-          <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="w3-container w3-dark-grey w3-padding-32">
-      <div class="w3-row">
-        <div class="w3-container w3-third">
-          <h5 class="w3-bottombar w3-border-green">Demographic</h5>
-          <p>Language</p>
-          <p>Country</p>
-          <p>City</p>
-        </div>
-        <div class="w3-container w3-third">
-          <h5 class="w3-bottombar w3-border-red">System</h5>
-          <p>Browser</p>
-          <p>OS</p>
-          <p>More</p>
-        </div>
-        <div class="w3-container w3-third">
-          <h5 class="w3-bottombar w3-border-orange">Target</h5>
-          <p>Users</p>
-          <p>Active</p>
-          <p>Geo</p>
-          <p>Interests</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-
-    <!-- End page content -->
-  </div>
-
-  <script>
-    // Get the Sidebar
-    var mySidebar = document.getElementById("mySidebar");
-
-    // Get the DIV with overlay effect
-    var overlayBg = document.getElementById("myOverlay");
-
-    // Toggle between showing and hiding the sidebar, and add overlay effect
-    function w3_open() {
-      if (mySidebar.style.display === 'block') {
-        mySidebar.style.display = 'none';
-        overlayBg.style.display = "none";
-      } else {
-        mySidebar.style.display = 'block';
-        overlayBg.style.display = "block";
-      }
-    }
-
-    // Close the sidebar with the close button
-    function w3_close() {
-      mySidebar.style.display = "none";
-      overlayBg.style.display = "none";
-    }
-  </script>
-  <!-- <script src="js/Map.js"></script> -->
-  <script>
-    var map;
-
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-          lat: 11.019263,
-          lng: -74.8495906
-        },
-        zoom: 17,
-
-      });
-    }
-  </script>
-  <script src="js/brigadistas.js"></script>
-  <script src="js/Casos.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src='js/tableCasos.js'></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FOEsjQwbAbbHqdVYWKNvzcsPw4Eooyo&callback=initMap" async
-    defer></script>
+				</form>
+			</div>
+		</div>
+	</div>
 
 
 </body>
-
 </html>
