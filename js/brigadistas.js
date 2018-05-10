@@ -10,6 +10,33 @@ function arrayObjectIndexOf(myArray, searchTerm, property) {
   }
   return -1;
 }
+/**
+ * Retorna el URL del icono
+ * @param {*} Status estado
+ */
+function icons(Status){
+  switch (Status) {
+    case `Disponible`:
+    return `iconos/status/${Status}.png`
+      
+      break;
+      case `Ocupado`:
+    return `iconos/status/${Status}.png`
+      
+      break;
+  
+    default:
+      return  `iconos/status/error.png`
+      break;
+  }
+   
+           
+  
+      
+      
+   
+
+}
 
 var database = firebase.database();
 var referenciajeffrey = firebase.database().ref('Usuarios');
@@ -47,17 +74,22 @@ class Brigadista {
       Nombre: this.Nombre,
       Estado: this.Estado,
       Cedula: this.Cedula,
-      icon: this.Estado == "Disponible" ? "imagenes/policeman-standing-up.png" : "iconos/MAPA/brigadista%20inactivo/32/empleados%20(22).png"
+      icon: icons(this.Estado)
     });
 
-    var tabla = ' <link rel="stylesheet" href="css/styles.css">' + '<table class="tg">' +
-      ' <tr><th class="tg-ikm8" rowspan="4">  <img src=' + this.Img_Perfil + ' alt="" height="120px" width="114px"></th> <th class="tg-cobo">Nombre</th><th class="tg-6nqv">' + this.Nombre + '</th>' +
-      '</tr> <tr><td class="tg-i3y8">Estado </td><td class="tg-6nqv">' + this.Estado + '</td>' +
-      '</tr><tr><td class="tg-i3y8">Turno</td><td class="tg-6nqv">' + this.Cedula + '</td></tr><tr>' +
-      '<td class="tg-i3y8">Fecha</td>' +
-      ' <td class="tg-6nqv">hoy</td>' +
-      ' </tr>' +
-      '</table>';
+  
+      var tabla = ` <link rel="stylesheet" href="css/styles.css"> <table class="tg"> 
+      <tr><th class="tg-ikm8" rowspan="4">  <img src=${this.Img_Perfil}
+      alt="" height="120px" width="114px"></th> <th class="tg-cobo">Nombre</th><th class="tg-6nqv"> ${this.Nombre}</th>
+      </tr> <tr><td class="tg-i3y8">Estado </td><td class="tg-6nqv">${this.Estado} </td>
+      </tr><tr><td class="tg-i3y8">Turno</td><td class="tg-6nqv">${this.Cedula} </td></tr><tr>
+      <td class="tg-i3y8">Fecha</td>
+      <td class="tg-6nqv">hoy</td>
+      <td class="tg-6nqv">hoy</td>
+      </tr>
+      </table>
+
+          ` 
 
     var infowindow = new google.maps.InfoWindow({
       content: tabla,
@@ -69,21 +101,7 @@ class Brigadista {
      
       infowindow.open(map, marker);
     });
-    // marker.addListener('mouseover', function () {
-     
-    //   infowindow.open(map, marker);
-    // });
-  //   google.maps.event.addListener(marker, 'mouseout', function () {
-  //     setTimeout(() => {
-  //         infowindow.close(map);
-
-
-  //     }, 800);
-
-
-
-
-  // });
+  
 
     return marker;
 
@@ -122,7 +140,7 @@ starCountRef.on("child_changed", function (res) {
     lng: Cambio.Long
   });
   if (Markers[index].Estado != Cambio.Estado) {
-    Markers[index].setIcon("iconos/MAPA/brigadista%20inactivo/32/empleados%20(22).png")
+    Markers[index].setIcon(icons(Cambio.Estado))
 
 
   }
