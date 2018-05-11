@@ -14,27 +14,22 @@ function arrayObjectIndexOf(myArray, searchTerm, property) {
  * Retorna el URL del icono
  * @param {*} Status estado
  */
-function icons(Status){
+function icons(Status) {
   switch (Status) {
-    case `Disponible`:
-    return `iconos/status/${Status}.png`
-      
+    case "Disponible":
+      return `iconos/status/${Status}.png`
+
       break;
-      case `Ocupado`:
-    return `iconos/status/${Status}.png`
-      
+    case `Ocupado`:
+      return `iconos/status/${Status}.png`
+
       break;
-  
+
     default:
-      return  `iconos/status/error.png`
+      return `iconos/status/error.png`
       break;
   }
-   
-           
-  
-      
-      
-   
+
 
 }
 
@@ -44,6 +39,7 @@ var starCountRef = firebase.database().ref('Usuarios');
 var Brigadistap, BrigadistasActivos = document.getElementById('BrigadistasActivos'),
   Checker, BrigadistasActivosCont = 0;
 var Markers = [];
+var Cambio;
 
 
 //Clase Brigadistas
@@ -65,7 +61,7 @@ class Brigadista {
   }
   putMarker() {
 
-    var marker = this.Marker = new google.maps.Marker({
+    var marker  = new google.maps.Marker({
       position: {
         lat: this.Lat,
         lng: this.Long
@@ -77,8 +73,8 @@ class Brigadista {
       icon: icons(this.Estado)
     });
 
-  
-      var tabla = ` <link rel="stylesheet" href="css/styles.css"> <table class="tg"> 
+
+    var tabla = ` <link rel="stylesheet" href="css/styles.css"> <table class="tg"> 
       <tr><th class="tg-ikm8" rowspan="4">  <img src=${this.Img_Perfil}
       alt="" height="120px" width="114px"></th> <th class="tg-cobo">Nombre</th><th class="tg-6nqv"> ${this.Nombre}</th>
       </tr> <tr><td class="tg-i3y8">Estado </td><td class="tg-6nqv">${this.Estado} </td>
@@ -89,7 +85,7 @@ class Brigadista {
       </tr>
       </table>
 
-          ` 
+          `
 
     var infowindow = new google.maps.InfoWindow({
       content: tabla,
@@ -97,11 +93,11 @@ class Brigadista {
 
 
     });
-    marker.addListener('click', function () {
-     
+    marker.addListener('click', ()=> {
+
       infowindow.open(map, marker);
     });
-  
+
 
     return marker;
 
@@ -111,7 +107,7 @@ class Brigadista {
 
 
 //Carga los datos la primera vez desde RealTimeDataBase
-referenciajeffrey.once('value', function (data) {
+referenciajeffrey.once('value',  (data)=> {
 
   data.forEach(element => {
 
@@ -127,9 +123,9 @@ referenciajeffrey.once('value', function (data) {
 });
 
 
-starCountRef.on("child_changed", function (res) {
+starCountRef.on("child_changed",  (res)=> {
   //Crea el objeto tipo brigasdista
-  var Cambio = new Brigadista(res);
+  Cambio = new Brigadista(res);
   //Find in Array 
   var index = arrayObjectIndexOf(Markers, Cambio.Cedula, "Cedula");
   //Debug
@@ -139,11 +135,8 @@ starCountRef.on("child_changed", function (res) {
     lat: Cambio.Lat,
     lng: Cambio.Long
   });
-  if (Markers[index].Estado != Cambio.Estado) {
-    Markers[index].setIcon(icons(Cambio.Estado))
-
-
-  }
+  Markers[index].setIcon(icons(Cambio.Estado))
+ 
 
 });
 

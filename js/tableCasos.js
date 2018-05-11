@@ -28,6 +28,7 @@ ref.orderByChild("status").equalTo("active").on("child_added", function (snapsho
 
 $(function(){
     $("#ModalSign").load('htmlimport/modal.html'); 
+    console.log("hola");
    
 
   });

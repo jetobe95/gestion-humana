@@ -106,7 +106,7 @@
         <i class="fa fa-users fa-fw"></i>  Overview</a>
       <a href="#casos" class="w3-bar-item w3-button w3-padding">
         <i class="fa fa-eye fa-fw"></i>  Casos</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding" data-toggle="modal" data-target="#exampleModal">
+      <a href="#" class="w3-bar-item w3-button w3-padding" data-toggle="modal" data-target="#modalLoginForm">
         <i class="fa fa-users fa-fw"></i> Registrar brigadista</a>
       <a href="#" class="w3-bar-item w3-button w3-padding">
         <i class="fa fa-bullseye fa-fw"></i>  Geo</a>
@@ -128,7 +128,8 @@
 
   <!-- Overlay effect when opening sidebar on small screens -->
   <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"
-    id="ModalSign"></div>
+   ></div>
+   <div  id="ModalSign" ></div>
 
   <!-- !PAGE CONTENT! -->
   <div class="w3-main" style="margin-left:300px;margin-top:43px;">
@@ -351,23 +352,23 @@
     var mySidebar = document.getElementById("mySidebar");
 
     // Get the DIV with overlay effect
-    var overlayBg = document.getElementById("myOverlay");
+    //var overlayBg = document.getElementById("myOverlay");
 
     // Toggle between showing and hiding the sidebar, and add overlay effect
     function w3_open() {
       if (mySidebar.style.display === 'block') {
         mySidebar.style.display = 'none';
-        overlayBg.style.display = "none";
+        //overlayBg.style.display = "none";
       } else {
         mySidebar.style.display = 'block';
-        overlayBg.style.display = "block";
+        //overlayBg.style.display = "block";
       }
     }
 
     // Close the sidebar with the close button
     function w3_close() {
       mySidebar.style.display = "none";
-      overlayBg.style.display = "none";
+      //overlayBg.style.display = "none";
     }
   </script>
   <!-- <script src="js/Map.js"></script> -->
@@ -391,6 +392,7 @@
   <script src='js/tableCasos.js'></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FOEsjQwbAbbHqdVYWKNvzcsPw4Eooyo&callback=initMap" async
     defer></script>
+
 
 
 </body>
