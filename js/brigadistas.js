@@ -61,7 +61,7 @@ class Brigadista {
   }
   putMarker() {
 
-    var marker  = new google.maps.Marker({
+    var marker = new google.maps.Marker({
       position: {
         lat: this.Lat,
         lng: this.Long
@@ -93,10 +93,14 @@ class Brigadista {
 
 
     });
-    marker.addListener('click', ()=> {
+    marker.addListener('click', () => {
 
       infowindow.open(map, marker);
     });
+    marker.addListener("dblclick",()=>{
+      console.log("Doble click");
+
+    })
 
 
     return marker;
@@ -107,7 +111,7 @@ class Brigadista {
 
 
 //Carga los datos la primera vez desde RealTimeDataBase
-referenciajeffrey.once('value',  (data)=> {
+referenciajeffrey.once('value', (data) => {
 
   data.forEach(element => {
 
@@ -123,7 +127,7 @@ referenciajeffrey.once('value',  (data)=> {
 });
 
 
-starCountRef.on("child_changed",  (res)=> {
+starCountRef.on("child_changed", (res) => {
   //Crea el objeto tipo brigasdista
   Cambio = new Brigadista(res);
   //Find in Array 
@@ -136,11 +140,6 @@ starCountRef.on("child_changed",  (res)=> {
     lng: Cambio.Long
   });
   Markers[index].setIcon(icons(Cambio.Estado))
- 
+
 
 });
-
-
-
-
-var storage = firebase.storage().ref("/Images/bombero (1).png");
