@@ -2,28 +2,51 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Crear Brigadista</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fa fa-envelope prefix grey-text"></i>
-          <input type="email" id="defaultForm-email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-        </div>
+        <form >
+          <div class="form-row">
+              <div class="form-group col-md-3">
 
-        <div class="md-form mb-4">
-          <i class="fa fa-lock prefix grey-text"></i>
-          <input type="password" id="defaultForm-pass" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-        </div>
+                  <input required placeholder="Nombre" type="text" id="defaultForm-email" class="form-control validate">
+                  
+              </div>
+              <div class="form-group col-md-3">
+
+                  <input required placeholder="Cedula" type="text" id="defaultForm-email" class="form-control validate">
+                  
+              </div>
+              <div class="form-group col-md-6">
+
+                  <input required type="text" placeholder="Correo Electronico" id="defaultForm-email" class="form-control validate">
+                  
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="inputState">Estado</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Disponible</option>
+                    <option>Ocupado</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-8">
+
+                    <label for="exampleFormControlFile1">Foto</label>
+                    <input required type="file" class="form-control-file" id="exampleFormControlFile1">
+                    
+                </div>
+                   
+          </div>
+         
+          <button class="btn btn-primary" type="submit" >Registrar</button>
+        </form>
+        
 
       </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-default">Login</button>
-      </div>
+      
     </div>
   </div>
 </div>

@@ -1,3 +1,11 @@
+var database = firebase.database();
+var referenciajeffrey = firebase.database().ref('Usuarios');
+var starCountRef = firebase.database().ref('Usuarios');
+var Brigadistap, BrigadistasActivos = document.getElementById('BrigadistasActivos'),
+  Checker, BrigadistasActivosCont = 0
+var Markers = [];
+var Cambio;
+
 /**
  * Find in array an object
  * @param {*} myArray Arreglo en el cual se va a buscar
@@ -28,23 +36,21 @@ function icons(Status) {
   }
 
 }
-function Click(params) {
-  console.log("Abrir caso");
- console.log(params); 
+
+function OpenCase(param) {
+  //console.log(param);
+  
+    
+  
 }
 
-var database = firebase.database();
-var referenciajeffrey = firebase.database().ref('Usuarios');
-var starCountRef = firebase.database().ref('Usuarios');
-var Brigadistap, BrigadistasActivos = document.getElementById('BrigadistasActivos'),
-  Checker, BrigadistasActivosCont = 0;
-var Markers = [];
-var Cambio;
+
 
 
 class Brigadista {
   constructor(Param) {
     var Data = Param.val()
+
     this.Nombre = Data.Nombre;
     this.Lat = Data.Lat;
     this.Long = Data.Long;
@@ -52,6 +58,9 @@ class Brigadista {
     this.Cedula = Data.Cedula;
     this.Celular = Data.Celular;
     this.Img_Perfil = Data.Img_Perfil;
+    this.all = {
+      Data
+    }
 
 
   }
@@ -67,6 +76,7 @@ class Brigadista {
       Estado: this.Estado,
       Cedula: this.Cedula,
       icon: icons(this.Estado)
+
     });
 
 
@@ -79,7 +89,7 @@ class Brigadista {
       <td class="tg-6nqv">hoy</td>
             </tr>
       </table>
-      <button type="button" onclick="Click(this)" class="btn btn-primary" data-toggle="modal" data-target="#Asignar">
+      <button type="button" onclick="OpenCase(${this.Cedula})" class="btn btn-primary" data-toggle="modal" data-target="#Asignar">
        Abrir Caso
       </button>
 
@@ -99,6 +109,7 @@ class Brigadista {
     });
     marker.addListener("dblclick", () => {
       console.log("Doble click");
+      OpenCase();
 
     })
 
@@ -112,8 +123,7 @@ class Brigadista {
 
 //Carga los datos la primera vez desde RealTimeDataBase
 referenciajeffrey.once('value', (data) => {
-
-  data.forEach(element => {
+    data.forEach(element => {
 
     Markers.push(new Brigadista(element).putMarker());
     Checker = new Brigadista(element);
@@ -124,22 +134,24 @@ referenciajeffrey.once('value', (data) => {
   });
   BrigadistasActivos.textContent = BrigadistasActivosCont;
 
-});
-
-
-starCountRef.on("child_changed", (res) => {
-  //Crea el objeto tipo brigasdista
-  Cambio = new Brigadista(res);
-  //Find in Array 
-  var index = arrayObjectIndexOf(Markers, Cambio.Cedula, "Cedula");
-  //Debug
-  console.log(index);
-  //Cambia La posición del marcador que cambio
-  Markers[index].setPosition({
-    lat: Cambio.Lat,
-    lng: Cambio.Long
+})
+.then(() => console.log("Todo Cargado"))
+.then(() => {
+  starCountRef.on("child_changed", (res) => {
+    //Crea el objeto tipo brigasdista
+    Cambio = new Brigadista(res);
+    //Find in Array 
+    var index = arrayObjectIndexOf(Markers, Cambio.Cedula, "Cedula");
+    //Debug
+    console.log(index);
+    //Cambia La posición del marcador que cambio
+    Markers[index].setPosition({
+      lat: Cambio.Lat,
+      lng: Cambio.Long
+    });
+    Markers[index].setIcon(icons(Cambio.Estado))
   });
-  Markers[index].setIcon(icons(Cambio.Estado))
+
 
 
 });
