@@ -1,4 +1,3 @@
-
 var database = firebase.database();
 var ref = firebase.database().ref('/Casos');
 
@@ -26,13 +25,12 @@ ref.orderByChild("status").equalTo("active").on("child_added", function (snapsho
 });
 
 
-$(function(){
-    $("#ModalSign").load('htmlimport/modal.html'); 
-    console.log("hola");
-   
+$(function () {
+    $("#ModalSign").load('htmlimport/modal.html');
 
-  });
 
-  $(function(){
-  $("#CreateBrig").load('htmlimport/CreateBrig.html'); 
+});
+
+$(function () {
+    $("#CreateBrig").load('htmlimport/CreateBrig.html');
 });

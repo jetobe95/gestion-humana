@@ -17,20 +17,20 @@ function arrayObjectIndexOf(myArray, searchTerm, property) {
 function icons(Status) {
   switch (Status) {
     case "Disponible":
-      return `iconos/status/${Status}.png`
-
+      return `iconos/status/${Status}.png`;
       break;
     case `Ocupado`:
-      return `iconos/status/${Status}.png`
-
+      return `iconos/status/${Status}.png`;
       break;
-
     default:
       return `iconos/status/error.png`
       break;
   }
 
-
+}
+function Click(params) {
+  console.log("Abrir caso");
+ console.log(params); 
 }
 
 var database = firebase.database();
@@ -42,10 +42,6 @@ var Markers = [];
 var Cambio;
 
 
-//Clase Brigadistas
-/**
- * Objeto Brigadista
- */
 class Brigadista {
   constructor(Param) {
     var Data = Param.val()
@@ -81,9 +77,13 @@ class Brigadista {
       </tr><tr><td class="tg-i3y8">Turno</td><td class="tg-6nqv">${this.Cedula} </td></tr><tr>
       <td class="tg-i3y8">Fecha</td>
       <td class="tg-6nqv">hoy</td>
-      <td class="tg-6nqv">hoy</td>
-      </tr>
+            </tr>
       </table>
+      <button type="button" onclick="Click(this)" class="btn btn-primary" data-toggle="modal" data-target="#Asignar">
+       Abrir Caso
+      </button>
+
+     
 
           `
 
@@ -97,7 +97,7 @@ class Brigadista {
 
       infowindow.open(map, marker);
     });
-    marker.addListener("dblclick",()=>{
+    marker.addListener("dblclick", () => {
       console.log("Doble click");
 
     })
