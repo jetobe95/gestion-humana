@@ -1,3 +1,4 @@
+
 var database = firebase.database();
 var referenciajeffrey = firebase.database().ref('Usuarios');
 var starCountRef = firebase.database().ref('Usuarios');
@@ -5,6 +6,7 @@ var Brigadistap, BrigadistasActivos = document.getElementById('BrigadistasActivo
   Checker, BrigadistasActivosCont = 0
 var Markers = [];
 var Cambio;
+
 
 /**
  * Find in array an object
@@ -39,9 +41,9 @@ function icons(Status) {
 
 function OpenCase(param) {
   //console.log(param);
-  
-    
-  
+
+
+
 }
 
 
@@ -61,12 +63,12 @@ class Brigadista {
     this.all = {
       Data
     }
-   
+
 
 
   }
- 
- 
+
+
 
 
   putMarker() {
@@ -81,9 +83,9 @@ class Brigadista {
       Estado: this.Estado,
       Cedula: this.Cedula,
       icon: icons(this.Estado),
-      
+
     });
-    
+
 
 
     var tabla = ` 
@@ -107,7 +109,7 @@ class Brigadista {
 
           `
 
-          
+
 
     var infowindow = new google.maps.InfoWindow({
       content: tabla,
@@ -137,30 +139,30 @@ class Brigadista {
 referenciajeffrey.once('value', (data) => {
     data.forEach(element => {
 
-    Markers.push(new Brigadista(element).putMarker());
-    Checker = new Brigadista(element);
-    if (Checker.Estado == "Disponible") {
-      BrigadistasActivosCont++;
+      Markers.push(new Brigadista(element).putMarker());
+      Checker = new Brigadista(element);
+      if (Checker.Estado == "Disponible") {
+        BrigadistasActivosCont++;
 
-    }
+      }
+    });
+    BrigadistasActivos.textContent = BrigadistasActivosCont;
+
+  })
+  .then(() => console.log("Todo Cargado"))
+  .then(() => {
+    starCountRef.on("child_changed", (res) => {
+      //Crea el objeto tipo brigasdista
+      Cambio = new Brigadista(res);
+      //Find in Array 
+      var index = arrayObjectIndexOf(Markers, Cambio.Cedula, "Cedula");
+      //Debug
+      console.log(index);
+      //Cambia La posición del marcador que cambio
+      Markers[index].setMap(null);
+      Markers[index] = Cambio.putMarker();
+    });
+
+
+
   });
-  BrigadistasActivos.textContent = BrigadistasActivosCont;
-
-})
-.then(() => console.log("Todo Cargado"))
-.then(() => {
-  starCountRef.on("child_changed", (res) => {
-    //Crea el objeto tipo brigasdista
-    Cambio = new Brigadista(res);
-    //Find in Array 
-    var index = arrayObjectIndexOf(Markers, Cambio.Cedula, "Cedula");
-    //Debug
-    console.log(index);
-    //Cambia La posición del marcador que cambio
-    Markers[index].setMap(null);
-    Markers[index]=Cambio.putMarker();
-  });
-
-
-
-});
