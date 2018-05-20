@@ -5,6 +5,7 @@ var starCountRef = firebase.database().ref('Usuarios');
 var Brigadistap, BrigadistasActivos = document.getElementById('BrigadistasActivos'),
   Checker, BrigadistasActivosCont = 0
 var Markers = [];
+
 var Cambio;
 
 
@@ -149,7 +150,6 @@ referenciajeffrey.once('value', (data) => {
     BrigadistasActivos.textContent = BrigadistasActivosCont;
 
   })
-  .then(() => console.log("Todo Cargado"))
   .then(() => {
     starCountRef.on("child_changed", (res) => {
       //Crea el objeto tipo brigasdista
@@ -161,8 +161,27 @@ referenciajeffrey.once('value', (data) => {
       //Cambia La posición del marcador que cambio
       Markers[index].setMap(null);
       Markers[index] = Cambio.putMarker();
-    });
+      scan();
+    })
+   
 
 
-
-  });
+  })
+  
+  
+  var scan=()=>{ 
+    BrigadistasActivosCont=0;  
+    Markers.map((data)=>{ 
+      
+      //BrigadistasActivos.textContent=0;
+      if (data.Estado=="Disponible") {
+        BrigadistasActivosCont++;
+               
+      }
+      else{
+        //BrigadistasActivosCont--;
+      }
+    })
+    BrigadistasActivos.textContent=BrigadistasActivosCont;
+    
+  }
