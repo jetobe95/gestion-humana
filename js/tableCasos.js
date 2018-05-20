@@ -1,6 +1,7 @@
 var database = firebase.database();
 var ref = firebase.database().ref('/Casos');
 var timeagoInstance = timeago();
+var avgTime = document.getElementById('avg-time');
 
 
 
