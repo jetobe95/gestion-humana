@@ -1,5 +1,7 @@
 var database = firebase.database();
 var ref = firebase.database().ref('/Casos');
+var timeagoInstance = timeago();
+
 
 
 
@@ -17,8 +19,9 @@ ref.orderByChild("status").equalTo("active").on("child_added", function (snapsho
     // document.getElementById("helper").textContent=data.helper;
     // document.getElementById("details").textContent=data.details;
     // document.getElementById("position").textContent=data.location;
+    
     cell1.innerHTML = data.idcase;
-    cell2.innerHTML = data.initdate;
+    cell2.innerHTML = timeagoInstance.format(data.initdate, 'test_local');        ;
     cell3.innerHTML = data.helper;
     cell4.innerHTML = data.details;
     cell5.innerHTML = data.location;

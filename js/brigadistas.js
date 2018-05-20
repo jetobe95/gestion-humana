@@ -87,14 +87,19 @@ class Brigadista {
 
 
     var tabla = ` 
-      <div class="card ${ this.Estado=='Disponible' ? 'bg-success':"none" } "  style="width: 16rem;">
-      
-      <div class="card-header">${ this.Estado}</div>
+      <div class="card  "  style="width: 16rem;">
+     
+      <div class="card-header">
+      ${this.Nombre}      
+      </div>
         <div class="card-body">
+        <img class="card-img-left img-thumbnail" src='/iconos/status/Disponible.png' alt="Card image cap">
        
-          <h5 class="card-title">${this.Estado}</h5>
+        <div class="alert ${ this.Estado=='Disponible' ? 'alert-success':"alert-danger" } role="alert">
+        ${ this.Estado}
+        </div>
           <p class="card-text"></p>
-          <button type="button" class="btn btn-secondary btn-lg ${ this.Estado=='Disponible' ? 'bg-success':"disabled" }" disabled>Button</button>
+          <button type="button" class="btn btn-secondary btn-lg ${ this.Estado=='Disponible' ? 'bg-success':"disabled" }" disabled>Abrir Caso</button>
         </div>
         </div>
 
