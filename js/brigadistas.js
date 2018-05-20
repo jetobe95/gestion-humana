@@ -61,9 +61,14 @@ class Brigadista {
     this.all = {
       Data
     }
+   
 
 
   }
+ 
+ 
+
+
   putMarker() {
 
     var marker = new google.maps.Marker({
@@ -75,27 +80,29 @@ class Brigadista {
       Nombre: this.Nombre,
       Estado: this.Estado,
       Cedula: this.Cedula,
-      icon: icons(this.Estado)
-
+      icon: icons(this.Estado),
+      
     });
+    
 
 
-    var tabla = ` <link rel="stylesheet" href="css/styles.css"> <table class="tg"> 
-      <tr><th class="tg-ikm8" rowspan="4">  <img src=${this.Img_Perfil}
-      alt="" height="120px" width="114px"></th> <th class="tg-cobo">Nombre</th><th class="tg-6nqv"> ${this.Nombre}</th>
-      </tr> <tr><td class="tg-i3y8">Estado </td><td class="tg-6nqv">${this.Estado} </td>
-      </tr><tr><td class="tg-i3y8">Turno</td><td class="tg-6nqv">${this.Cedula} </td></tr><tr>
-      <td class="tg-i3y8">Fecha</td>
-      <td class="tg-6nqv">hoy</td>
-            </tr>
-      </table>
-      <button type="button" onclick="OpenCase(${this.Cedula})" class="btn btn-primary" data-toggle="modal" data-target="#Asignar">
-       Abrir Caso
-      </button>
+    var tabla = ` 
+      <div class="card ${ this.Estado=='Disponible' ? 'bg-success':"none" } "  style="width: 16rem;">
+      
+      <div class="card-header">${ this.Estado}</div>
+        <div class="card-body">
+       
+          <h5 class="card-title">${this.Estado}</h5>
+          <p class="card-text"></p>
+          <button type="button" class="btn btn-secondary btn-lg ${ this.Estado=='Disponible' ? 'bg-success':"disabled" }" disabled>Button</button>
+        </div>
+        </div>
 
      
 
           `
+
+          
 
     var infowindow = new google.maps.InfoWindow({
       content: tabla,
@@ -145,11 +152,8 @@ referenciajeffrey.once('value', (data) => {
     //Debug
     console.log(index);
     //Cambia La posición del marcador que cambio
-    Markers[index].setPosition({
-      lat: Cambio.Lat,
-      lng: Cambio.Long
-    });
-    Markers[index].setIcon(icons(Cambio.Estado))
+    Markers[index].setMap(null);
+    Markers[index]=Cambio.putMarker();
   });
 
 
