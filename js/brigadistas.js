@@ -40,8 +40,22 @@ function icons(Status) {
 
 }
 
-function OpenCase(param) {
-  //console.log(param);
+function OpenCase(Hello) {
+  console.log("Abrir Caso");
+  let Brig;
+  
+  if (Markers) {
+    Markers.map((e)=>{
+      if (e.Cedula==Hello) {
+
+         Brig=e;
+      }
+      
+      
+    })
+    
+  }
+  return Brig;
 
 
 
@@ -61,9 +75,9 @@ class Brigadista {
     this.Cedula = Data.Cedula;
     this.Celular = Data.Celular;
     this.Img_Perfil = Data.Img_Perfil;
-    this.all = {
-      Data
-    }
+    
+     
+    
 
 
 
@@ -83,29 +97,39 @@ class Brigadista {
       Nombre: this.Nombre,
       Estado: this.Estado,
       Cedula: this.Cedula,
-      icon: icons(this.Estado),
+      icon: icons(this.Estado)
 
     });
 
 
 
     var tabla = ` 
-      <div class="card  "  style="width: 16rem;">
+  
+      <div class="card"  style="width: 16rem;">
      
       <div class="card-header">
       ${this.Nombre}      
       </div>
         <div class="card-body">
+       
         <img class="card-img-left img-thumbnail" src='/iconos/status/Disponible.png' alt="Card image cap">
        
         <div class="alert ${ this.Estado=='Disponible' ? 'alert-success':"alert-danger" } role="alert">
         ${ this.Estado}
         </div>
           <p class="card-text"></p>
-          <button type="button" class="btn btn-secondary btn-lg ${ this.Estado=='Disponible' ? 'bg-success':"disabled" }" disabled>Abrir Caso</button>
+          <button  data-toggle="collapse" data-target="#collapseExample"  class="btn btn-secondary btn-lg ${ this.Estado=='Disponible' ? 'bg-success':"disabled" }">Abrir Caso</button>
         </div>
         </div>
 
+        <!-- Card 2 -->
+        
+    
+      
+        
+        
+
+       
      
 
           `
